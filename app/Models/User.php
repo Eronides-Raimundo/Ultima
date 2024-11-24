@@ -38,7 +38,11 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
+   
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'two_factor_enabled' => 'boolean',
+        'two_factor_expires_at' => 'datetime',
     ];
+    
 }
