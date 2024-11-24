@@ -158,6 +158,11 @@
                 <i class="bi bi-cart nav-icon"></i>
                 <span>Ver Logs</span>
             </a>
+            <a href="/movies" class="nav-link">
+                <i class="bi bi-film nav-icon"></i>
+                <span>Filmes</span>
+            </a>
+
             <a href="/reports" class="nav-link">
                 <i class="bi bi-graph-up nav-icon"></i>
                 <span>Relatórios</span>

@@ -6,7 +6,11 @@ use App\Models\Log;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\TwoFactorAuthController;
 use App\Http\Controllers\Auth\SettingsController;
+use App\Http\Controllers\MovieController;
 
+
+Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
+Route::get('/movies/{movie_id}', [MovieController::class, 'show'])->name('movies.show');
 Route::get('/two-factor', [TwoFactorAuthController::class, 'show'])->name('auth.two-factor');
 Route::post('/two-factor', [TwoFactorAuthController::class, 'verify']);
 Route::post('/two-factor/resend', [TwoFactorAuthController::class, 'resend'])->name('auth.two-factor.resend');
