@@ -1,48 +1,39 @@
 <?php
-
 namespace App\Observers;
 
 use App\Models\User;
+use App\Models\Log;
 
 class UserObserver
 {
-    /**
-     * Handle the User "created" event.
-     */
-    public function created(User $user): void
+    public function created(User $user)
     {
-        //
+        Log::create([
+            'model' => User::class,
+            'model_id' => $user->id,
+            'action' => 'create',
+            'changes' => $user->toArray(),
+        ]);
     }
 
-    /**
-     * Handle the User "updated" event.
-     */
-    public function updated(User $user): void
+    public function updated(User $user)
     {
-        //
+        $changes = $user->getChanges();
+        Log::create([
+            'model' => User::class,
+            'model_id' => $user->id,
+            'action' => 'update',
+            'changes' => $changes,
+        ]);
     }
 
-    /**
-     * Handle the User "deleted" event.
-     */
-    public function deleted(User $user): void
+    public function deleted(User $user)
     {
-        //
-    }
-
-    /**
-     * Handle the User "restored" event.
-     */
-    public function restored(User $user): void
-    {
-        //
-    }
-
-    /**
-     * Handle the User "force deleted" event.
-     */
-    public function forceDeleted(User $user): void
-    {
-        //
+        Log::create([
+            'model' => User::class,
+            'model_id' => $user->id,
+            'action' => 'delete',
+            'changes' => null,
+        ]);
     }
 }
