@@ -7,7 +7,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\TwoFactorAuthController;
 use App\Http\Controllers\Auth\SettingsController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\Auth\GithubController;
 
+Route::get('/auth/github', [GithubController::class, 'redirectToGithub'])->name('auth.github');
+Route::get('/auth/github/callback', [GithubController::class, 'handleGithubCallback'])->name('auth.github.callback');
 
 Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
 Route::get('/movies/{movie_id}', [MovieController::class, 'show'])->name('movies.show');
